@@ -106,18 +106,55 @@
 	cts-pin = <7>;
 };
 
-&i2c0 {
+arduino_i2c: &i2c0 {
 	compatible = "nordic,nrf-twi";
 	status = "okay";
 	sda-pin = <26>;
 	scl-pin = <27>;
 };
 
+/*
 &i2c1 {
 	compatible = "nordic,nrf-twi";
-	status = "okay";
 	sda-pin = <30>;
 	scl-pin = <31>;
+};
+*/
+arduino_spi: &spi1 {
+	compatible = "nordic,nrf-spi";
+	status = "okay";
+	sck-pin = <31>;
+	mosi-pin = <30>;
+	miso-pin = <40>;
+};
+
+&spi2 {
+	compatible = "nordic,nrf-spi";
+	status = "okay";
+	sck-pin = <12>;
+	mosi-pin = <13>;
+	miso-pin = <14>;
+};
+
+&qspi {
+	status = "okay";
+	sck-pin = <35>;
+	io-pins = <37>, <36>, <34>, <33>;
+	csn-pins = <38>;
+	mx25r64: mx25r6435f@0 {
+		compatible = "nordic,qspi-nor";
+		reg = <0>;
+		writeoc = "pp4io";
+		readoc = "read4io";
+		sck-frequency = <8000000>;
+		label = "MX25R64";
+		jedec-id = [c2 28 17];
+		size = <67108864>;
+		has-be32k;
+		has-dpd;
+		t-enter-dpd = <10000>;
+		t-exit-dpd = <35000>;
+	};
 };
 
 &pwm0 {
