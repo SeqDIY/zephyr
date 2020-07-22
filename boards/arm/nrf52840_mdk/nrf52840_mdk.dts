@@ -113,14 +113,15 @@ arduino_i2c: &i2c0 {
 	scl-pin = <27>;
 };
 
-/*
+
 &i2c1 {
 	compatible = "nordic,nrf-twi";
-	sda-pin = <30>;
-	scl-pin = <31>;
+	status = "okay";
+	sda-pin = <28>;
+	scl-pin = <29>;
 };
-*/
-arduino_spi: &spi1 {
+
+arduino_spi: &spi2 {
 	compatible = "nordic,nrf-spi";
 	status = "okay";
 	sck-pin = <31>;
@@ -128,8 +129,8 @@ arduino_spi: &spi1 {
 	miso-pin = <40>;
 };
 
-&spi2 {
-	compatible = "nordic,nrf-spi";
+&spi3 {
+	/*compatible = "nordic,nrf-spi";*/
 	status = "okay";
 	sck-pin = <12>;
 	mosi-pin = <13>;
