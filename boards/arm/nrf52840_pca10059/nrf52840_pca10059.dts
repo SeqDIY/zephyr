@@ -86,24 +86,23 @@
 	compatible = "nordic,nrf-uarte";
 	status = "okay";
 	current-speed = <115200>;
-	tx-pin = <20>;
-	rx-pin = <24>;
+	tx-pin = <8>;
+	rx-pin = <6>;
 	rts-pin = <17>;
-	cts-pin = <22>;
+	cts-pin = <23>;
+};
+
+&i2c1 {
+	compatible = "nordic,nrf-twi";
+	status = "okay";
+	sda-pin = <32>;
+	scl-pin = <9>;
 };
 
 &i2c0 {
 	compatible = "nordic,nrf-twi";
 	status = "okay";
-	sda-pin = <26>;
-	scl-pin = <27>;
-};
-
-&i2c1 {
-	compatible = "nordic,nrf-twi";
-	/* Cannot be used together with spi1. */
-	/* status = "okay"; */
-	sda-pin = <30>;
+	sda-pin = <29>;
 	scl-pin = <31>;
 };
 
@@ -120,12 +119,20 @@
 	miso-pin = <42>;
 };
 
-&spi1 {
+arduino_spi: &spi3 {
+	/* compatible = "nordic,nrf-spim"; */
+	status = "okay";
+	sck-pin = <31>;
+	mosi-pin = <45>;
+	miso-pin = <40>;
+};
+
+&spi2 {
 	compatible = "nordic,nrf-spi";
 	status = "okay";
 	sck-pin = <31>;
-	mosi-pin = <30>;
-	miso-pin = <45>;
+	mosi-pin = <29>;
+	miso-pin = <2>;
 };
 
 /* Include flash partition table.
